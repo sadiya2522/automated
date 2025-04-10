@@ -1,0 +1,14 @@
+from fpdf import FPDF
+
+with open("sample_data.txt", "r") as file:
+    lines = file.readlines()
+
+report = FPDF()
+report.add_page()
+report.set_font("Arial", size=12)
+report.cell(200, 10, txt="Automated Report", ln=True, align="C")
+
+for line in lines:
+    report.cell(200, 10, txt=line.strip(), ln=True)
+
+report.output("report.pdf")
